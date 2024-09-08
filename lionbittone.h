@@ -122,4 +122,117 @@ void playHappyBirthday(int buzzerPin) {
 }
 
 
+// melody  "Twinkle Twinkle Little Star"
+int twinkleMelody[] = {
+  NOTE_C4, NOTE_C4, NOTE_G4, NOTE_G4, NOTE_A4, NOTE_A4, NOTE_G4,
+  NOTE_F4, NOTE_F4, NOTE_E4, NOTE_E4, NOTE_D4, NOTE_D4, NOTE_C4,
+  NOTE_G4, NOTE_G4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_E4, NOTE_D4,
+  NOTE_G4, NOTE_G4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_E4, NOTE_D4,
+  NOTE_C4, NOTE_C4, NOTE_G4, NOTE_G4, NOTE_A4, NOTE_A4, NOTE_G4,
+  NOTE_F4, NOTE_F4, NOTE_E4, NOTE_E4, NOTE_D4, NOTE_D4, NOTE_C4
+};
+
+int twinkleDurations[] = {
+  4, 4, 4, 4, 4, 4, 2,
+  4, 4, 4, 4, 4, 4, 2,
+  4, 4, 4, 4, 4, 4, 2,
+  4, 4, 4, 4, 4, 4, 2,
+  4, 4, 4, 4, 4, 4, 2,
+  4, 4, 4, 4, 4, 4, 2
+};
+
+// Function "Twinkle Twinkle Little Star"
+void playTwinkle(int buzzerPin) {
+  for (int thisNote = 0; thisNote < sizeof(twinkleMelody) / sizeof(twinkleMelody[0]); thisNote++) {
+    int noteDuration = 1000 / twinkleDurations[thisNote];
+    tone(buzzerPin, twinkleMelody[thisNote], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(buzzerPin);
+  }
+}
+
+
+// melody  "Jingle Bells"
+int jingleBellsMelody[] = {
+  NOTE_E4, NOTE_E4, NOTE_E4,
+  NOTE_E4, NOTE_E4, NOTE_E4,
+  NOTE_E4, NOTE_G4, NOTE_C4, NOTE_D4, NOTE_E4,
+  NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_E4,
+  NOTE_E4, NOTE_D4, NOTE_D4, NOTE_E4, NOTE_D4, NOTE_G4
+};
+
+int jingleBellsDurations[] = {
+  4, 4, 4,
+  4, 4, 4,
+  2, 4, 4, 4, 2,
+  4, 4, 4, 4, 4, 4, 4, 4, 4,
+  4, 4, 4, 4, 4, 2
+};
+
+// Function "Jingle Bells"
+void playJingleBells(int buzzerPin) {
+  for (int thisNote = 0; thisNote < sizeof(jingleBellsMelody) / sizeof(jingleBellsMelody[0]); thisNote++) {
+    int noteDuration = 1000 / jingleBellsDurations[thisNote];
+    tone(buzzerPin, jingleBellsMelody[thisNote], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(buzzerPin);
+  }
+}
+
+
+// melody  "Mary Had a Little Lamb"
+int maryLambMelody[] = {
+  NOTE_E4, NOTE_D4, NOTE_C4, NOTE_D4, NOTE_E4, NOTE_E4, NOTE_E4,
+  NOTE_D4, NOTE_D4, NOTE_D4, NOTE_E4, NOTE_G4, NOTE_G4,
+  NOTE_E4, NOTE_D4, NOTE_C4, NOTE_D4, NOTE_E4, NOTE_E4, NOTE_E4, 
+  NOTE_E4, NOTE_D4, NOTE_D4, NOTE_E4, NOTE_D4, NOTE_C4
+};
+
+int maryLambDurations[] = {
+  4, 4, 4, 4, 4, 4, 4,
+  4, 4, 4, 4, 4, 2,
+  4, 4, 4, 4, 4, 4, 4,
+  4, 4, 4, 4, 4, 2
+};
+
+// Function "Mary Had a Little Lamb"
+void playMaryLamb(int buzzerPin) {
+  for (int thisNote = 0; thisNote < sizeof(maryLambMelody) / sizeof(maryLambMelody[0]); thisNote++) {
+    int noteDuration = 1000 / maryLambDurations[thisNote];
+    tone(buzzerPin, maryLambMelody[thisNote], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(buzzerPin);
+  }
+}
+
+// melody  "Sri Lanka National Anthem (Fragment)"
+int sriLankaAnthemMelody[] = {
+  NOTE_C4, NOTE_C4, NOTE_D4, NOTE_E4, NOTE_F4, NOTE_E4, NOTE_D4,
+  NOTE_D4, NOTE_E4, NOTE_F4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4,
+  NOTE_D4, NOTE_C4, NOTE_D4, NOTE_E4, NOTE_F4, NOTE_E4, NOTE_D4,
+  NOTE_E4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_F4, NOTE_G4, NOTE_A4
+};
+
+int sriLankaAnthemDurations[] = {
+  4, 4, 4, 4, 4, 4, 4,
+  4, 4, 4, 4, 4, 4, 4, 4,
+  4, 4, 4, 4, 4, 4, 4,
+  4, 4, 4, 4, 4, 4, 2
+};
+
+// Function "Sri Lanka National Anthem"
+void playSriLankaAnthem(int buzzerPin) {
+  for (int thisNote = 0; thisNote < sizeof(sriLankaAnthemMelody) / sizeof(sriLankaAnthemMelody[0]); thisNote++) {
+    int noteDuration = 1000 / sriLankaAnthemDurations[thisNote];
+    tone(buzzerPin, sriLankaAnthemMelody[thisNote], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(buzzerPin);
+  }
+}
+
+
 #endif
