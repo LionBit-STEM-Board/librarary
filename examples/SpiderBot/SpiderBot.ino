@@ -1,3 +1,9 @@
+/*
+  This example demonstrates controlling the movement of a SpiderBot robot using the Lionbit board.
+  The SpiderBot's movements are based on predefined commands within the code.
+*/
+
+
 #include <ESP32Servo.h>
 #include <analogWrite.h>
  

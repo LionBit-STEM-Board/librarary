@@ -1,3 +1,7 @@
+/*
+  This example demonstrates how to use a touch sensor with the Lionbit board.
+  The code reacts to input from a touch sensor connected to a specified pin.
+*/
 
 volatile int capacitiveValue=100;
 volatile int threshold=10;

@@ -1,3 +1,10 @@
+/*
+  This example demonstrates a simple test of a servo motor using the Lionbit board.
+  The servo motor is controlled to move to different positions within a range of angles.
+*/
+
+
+
 #include <ESP32Servo.h>
 #define PIN_SG90 D16 // Output pin used
 

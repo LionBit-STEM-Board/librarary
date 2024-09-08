@@ -1,3 +1,7 @@
+/*
+  This example demonstrates how to generate various tones using the tone() function.
+  A buzzer connected to the Lionbit board will play different frequencies.
+*/
 
 int BUZZER_PIN = 21;
 int BUZZER_CHANNEL = 0;
