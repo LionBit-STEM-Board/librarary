@@ -1,3 +1,8 @@
+#ifndef LIONBITTONE_H
+#define LIONBITTONE_H
+
+#include <Arduino.h>
+
 #define NOTE_B0  31
 #define NOTE_C1  33
 #define NOTE_CS1 35
@@ -90,3 +95,31 @@
 
 
 
+// melody  "Happy Birthday"
+int happyBirthdayMelody[] = {
+  NOTE_G4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_C5, NOTE_B4,
+  NOTE_G4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_D5, NOTE_C5,
+  NOTE_G4, NOTE_G4, NOTE_G5, NOTE_E5, NOTE_C5, NOTE_B4, NOTE_A4,
+  NOTE_F5, NOTE_F5, NOTE_E5, NOTE_C5, NOTE_D5, NOTE_C5
+};
+
+int happyBirthdayDurations[] = {
+  4, 4, 4, 4, 4, 4,
+  4, 4, 4, 4, 4, 4,
+  4, 4, 4, 4, 4, 4, 4,
+  4, 4, 4, 4, 4, 4
+};
+
+// Function "Happy Birthday"
+void playHappyBirthday(int buzzerPin) {
+  for (int thisNote = 0; thisNote < sizeof(happyBirthdayMelody) / sizeof(happyBirthdayMelody[0]); thisNote++) {
+    int noteDuration = 1000 / happyBirthdayDurations[thisNote];
+    tone(buzzerPin, happyBirthdayMelody[thisNote], noteDuration);
+    int pauseBetweenNotes = noteDuration * 1.30;
+    delay(pauseBetweenNotes);
+    noTone(buzzerPin);
+  }
+}
+
+
+#endif
