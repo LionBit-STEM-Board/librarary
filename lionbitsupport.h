@@ -1,7 +1,7 @@
 #include <Adafruit_GFX.h> 
 #include <Adafruit_ST7735.h> 
 #include <SPI.h>
-
+//vdvss
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
 
 const unsigned short  smf [] PROGMEM = {
