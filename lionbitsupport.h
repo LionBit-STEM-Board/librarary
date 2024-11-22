@@ -1,8 +1,11 @@
 #include <Adafruit_GFX.h> 
 #include <Adafruit_ST7735.h> 
 #include <SPI.h>
+#include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
 //vdvss
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(1, RGBLED, NEO_GRB + NEO_KHZ800);
 
 #include <Arduino.h>
 
@@ -3383,4 +3386,30 @@ void TextColor(int x) {
 }
 void DisRotation(int x) {
  tft.setRotation(x);
+}
+
+
+
+// RGB LED code
+
+
+
+void setupRGB() {
+    pixels.begin();
+    pinMode(RED_PIN, OUTPUT);
+    pinMode(GREEN_PIN, OUTPUT);
+    pinMode(BLUE_PIN, OUTPUT);
+}
+
+void RGB(int redValue, int greenValue, int blueValue) {
+for (int i = 0; i < 2; i++) {
+for (int j = 0; j < 2; j++) {
+for (int k = 0; k < 2; k++) {
+
+pixels.setPixelColor(0, pixels.Color(i * 255, j * 255, k * 255)); // Moderately bright green color.
+pixels.show(); // This sends the updated pixel color to the hardware.
+delay(200); // Delay for a period of time (in milliseconds).
+}
+}
+}
 }
