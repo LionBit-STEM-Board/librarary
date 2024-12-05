@@ -13,7 +13,7 @@
 Servo servoMotor;
 
 void setup() {
-  servoMotor.attach(D16);  // attaches the servo on ESP32 pin
+  servoMotor.attach(D16);  // පින් 16 යට Servo Motor එක සම්බන්ධ කරන්න.
 }
 
 void loop() {
