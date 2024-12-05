@@ -6,7 +6,7 @@ void setup() {
    
     Serial.begin(115200);
     delay(1000); // Delay to launch the serial monitor
-    Serial.println("ESP32 Touch Demo");
+    Serial.println("LionBit Touch Demo");
 }
 
 void loop() {
