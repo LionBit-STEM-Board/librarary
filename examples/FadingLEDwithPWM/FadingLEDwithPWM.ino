@@ -45,7 +45,7 @@ const int DELAY_MS = 4;    // delay between fade increments
 int _ledFadeStep = 5; // amount to fade per loop
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   // Unlike traditional Arduino, we do not setup our PWM output pins
   // here with pinMode. Instead, we setup our PWM timer channel and then
