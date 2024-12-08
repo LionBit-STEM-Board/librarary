@@ -3514,9 +3514,9 @@ void RGB(int redValue, int greenValue, int blueValue)
       for (int k = 0; k < 2; k++)
       {
 
-        pixels.setPixelColor(0, pixels.Color(i * 255, j * 255, k * 255)); // Moderately bright green color.
-        pixels.show();                                                    // This sends the updated pixel color to the hardware.
-        delay(200);                                                       // Delay for a period of time (in milliseconds).
+        pixels.setPixelColor(0, pixels.Color(i * 255, j * 255, k * 255));
+        pixels.show();                                                   
+        delay(200);                                                      
       }
     }
   }
