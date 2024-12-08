@@ -3,11 +3,12 @@
 #include <SPI.h>
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
+
 //vdvss
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(1, RGBLED, NEO_GRB + NEO_KHZ800);
 
-#include <Arduino.h>
+
 
 #define NOTE_B0  31
 #define NOTE_C1  33
@@ -99,6 +100,18 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(1, RGBLED, NEO_GRB + NEO_KHZ800);
 #define NOTE_D8  4699
 #define NOTE_DS8 4978
 
+
+uint16_t getColorFromName(const char* colorName) {
+    if (strcmp(colorName, "red") == 0) return ST7735_RED;
+    if (strcmp(colorName, "blue") == 0) return ST7735_BLUE;
+    if (strcmp(colorName, "green") == 0) return ST7735_GREEN;
+    if (strcmp(colorName, "white") == 0) return ST7735_WHITE;
+    if (strcmp(colorName, "black") == 0) return ST7735_BLACK;
+    if (strcmp(colorName, "yellow") == 0) return ST7735_YELLOW;
+    if (strcmp(colorName, "cyan") == 0) return ST7735_CYAN;
+    if (strcmp(colorName, "magenta") == 0) return ST7735_MAGENTA;
+    return ST7735_WHITE; 
+}
 
 const unsigned short  smf [] PROGMEM = {
   0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,   // 0x0010 (16) pixels
@@ -3419,46 +3432,38 @@ delay(200); // Delay for a period of time (in milliseconds).
 
 // progressbar style 1 
 
-
-void drawProgressBar(int value, uint16_t barColor = ST7735_GREEN, const char* labelText = "Progress Bar Test", const char* percentageText = nullptr) {
-    
+void drawProgressBar(int value, const char* barColorName = "green", const char* labelText = "Progress Bar Test", const char* percentageText = nullptr) {
+   
     if (value < 0) value = 0;
     if (value > 100) value = 100;
-
+    
+    uint16_t barColor = getColorFromName(barColorName);
     
     const int progressBarWidth = 100;  
-    const int progressBarHeight = 10; 
+    const int progressBarHeight = 10;
     const int startX = 14;            
-    const int startY = 60;            
-
-
+    const int startY = 60;           
+    
     tft.fillScreen(ST7735_BLACK);
-
-
+    
     if (labelText != nullptr) {
         tft.setTextColor(ST7735_WHITE);
         tft.setTextSize(1);
         tft.setCursor(10, 30);
         tft.println(labelText);
     }
-
-
+    
     tft.fillRect(startX, startY, progressBarWidth, progressBarHeight, ST7735_BLACK);
-
-
     int filledWidth = (value * progressBarWidth) / 100;
-
     tft.fillRect(startX, startY, filledWidth, progressBarHeight, barColor);
-
     tft.drawRect(startX, startY, progressBarWidth, progressBarHeight, ST7735_WHITE);
-
 
     if (percentageText != nullptr) {
         char percentage[10];
         snprintf(percentage, sizeof(percentage), "%d%%", value);  
         tft.setTextColor(ST7735_WHITE);
         tft.setTextSize(1);
-        tft.setCursor(startX + progressBarWidth / 2 - 10, startY + progressBarHeight + 10);
+        tft.setCursor(startX + progressBarWidth / 2 - 10, startY + progressBarHeight + 10); 
         tft.println(percentage);
     }
 }
