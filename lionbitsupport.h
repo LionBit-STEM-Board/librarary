@@ -3413,3 +3413,52 @@ delay(200); // Delay for a period of time (in milliseconds).
 }
 }
 }
+
+
+
+
+// progressbar style 1 
+
+
+void drawProgressBar(int value, uint16_t barColor = ST7735_GREEN, const char* labelText = "Progress Bar Test", const char* percentageText = nullptr) {
+    
+    if (value < 0) value = 0;
+    if (value > 100) value = 100;
+
+    
+    const int progressBarWidth = 100;  
+    const int progressBarHeight = 10; 
+    const int startX = 14;            
+    const int startY = 60;            
+
+
+    tft.fillScreen(ST7735_BLACK);
+
+
+    if (labelText != nullptr) {
+        tft.setTextColor(ST7735_WHITE);
+        tft.setTextSize(1);
+        tft.setCursor(10, 30);
+        tft.println(labelText);
+    }
+
+
+    tft.fillRect(startX, startY, progressBarWidth, progressBarHeight, ST7735_BLACK);
+
+
+    int filledWidth = (value * progressBarWidth) / 100;
+
+    tft.fillRect(startX, startY, filledWidth, progressBarHeight, barColor);
+
+    tft.drawRect(startX, startY, progressBarWidth, progressBarHeight, ST7735_WHITE);
+
+
+    if (percentageText != nullptr) {
+        char percentage[10];
+        snprintf(percentage, sizeof(percentage), "%d%%", value);  
+        tft.setTextColor(ST7735_WHITE);
+        tft.setTextSize(1);
+        tft.setCursor(startX + progressBarWidth / 2 - 10, startY + progressBarHeight + 10);
+        tft.println(percentage);
+    }
+}
