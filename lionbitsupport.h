@@ -4180,6 +4180,17 @@ void xmass(){
   tft.drawRGBBitmap(0,0,xmasstree, 128,128);
 }
 
+
+void customImage(const uint16_t custImg[]) {
+    if (custImg != nullptr) { 
+        tft.drawRGBBitmap(0, 0, custImg, 128, 128);
+    } else {
+        tft.setCursor(0,0);
+        tft.print("Image Data is NULL");
+    }
+}
+
+
 void testdrawtext(char *text, uint16_t color)
 {
   tft.setCursor(0, 0);
