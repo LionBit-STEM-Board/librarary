@@ -7,7 +7,7 @@ void setup() {
 void loop() {
     // Increment progress bar from 0 to 100
     for (int i = 0; i <= 100; i++) {
-        drawProgressBar(i, ST7735_BLUE, "Custom Progress", ""); 
+        drawProgressBar(i, "blue", "Custom Progress", "");  // Aruguments : Progress, Color, Title, Percentage
         delay(10);                                              
     }
 
