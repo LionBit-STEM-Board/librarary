@@ -4,7 +4,6 @@
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
 
-// vdvss
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(1, RGBLED, NEO_GRB + NEO_KHZ800);
 
@@ -4235,33 +4234,6 @@ void DisRotation(int x)
 }
 
 
-// FIX: Error on compile 
-// RGB LED code
-
-// void setupRGB()
-// {
-//   pixels.begin();
-//   pinMode(RED_PIN, OUTPUT);
-//   pinMode(GREEN_PIN, OUTPUT);
-//   pinMode(BLUE_PIN, OUTPUT);
-// }
-
-// void RGB(int redValue, int greenValue, int blueValue)
-// {
-//   for (int i = 0; i < 2; i++)
-//   {
-//     for (int j = 0; j < 2; j++)
-//     {
-//       for (int k = 0; k < 2; k++)
-//       {
-
-//         pixels.setPixelColor(0, pixels.Color(i * 255, j * 255, k * 255)); // Moderately bright green color.
-//         pixels.show();                                                    // This sends the updated pixel color to the hardware.
-//         delay(200);                                                       // Delay for a period of time (in milliseconds).
-//       }
-//     }
-//   }
-// }
 
 // progressbar style 1
 
@@ -4305,3 +4277,35 @@ void drawProgressBar(int value, const char *barColorName = "green", const char *
     tft.println(percentage);
   }
 }
+
+
+// Led Functions 
+
+
+// Function prototypes
+void pattern1_AlternatingColors(int redPin, int greenPin, int bluePin);
+// void pattern2_Blinking(int ledPin, int redPin, int greenPin, int);
+// void pattern3_Fading(int ledPin);
+// void pattern4_RunningLights(int ledPin);
+
+// Implementation of LED patterns
+
+void pattern1_AlternatingColors(int redPin, int greenPin, int bluePin) {
+    analogWrite(redPin, 255);   // Red
+    analogWrite(greenPin, 0);
+    analogWrite(bluePin, 0);
+    delay(500);
+    
+    analogWrite(redPin, 0);
+    analogWrite(greenPin, 255); // Green
+    analogWrite(bluePin, 0);
+    delay(500);
+    
+    analogWrite(redPin, 0);
+    analogWrite(greenPin, 0);
+    analogWrite(bluePin, 255);  // Blue
+    delay(500);
+}
+
+
+#endif
